@@ -1,12 +1,13 @@
-# Amazon Plugin for CakePHP 1.3+
+# Amazon Plugin for CakePHP 2.0+
 
-This plugin is a (*very*) thin veil over Amazon's [AWS SDK for PHP](http://aws.amazon.com/sdkforphp/) for use in CakePHP controllers and shells.
+This plugin is a (*very*) thin veil over Amazon's [AWS SDK for PHP](http://aws.amazon.com/sdkforphp/) for use in CakePHP controllers.
+Forked from http://github.com/joebeeson/amazon for CakePHP 1.3+
 
 ## Installation
 
 * Download the plugin
 
-        $ cd /path/to/your/app/plugins && git clone git://github.com/joebeeson/amazon.git
+        $ cd /path/to/your/app/plugins && git clone git://github.com/mcallisto/amazon.git
 
 * Add the component to a controller
 
@@ -17,40 +18,38 @@ This plugin is a (*very*) thin veil over Amazon's [AWS SDK for PHP](http://aws.a
 			)
 		);
 
-* Add the task to a shell
-
-		public $tasks = array(
-			'Amazon.Amazon'
-		);
-
-		public function startup() {
-			$this->Amazon->setSetting('key', 'Your Amazon API key');
-			$this->Amazon->setSetting('secret', 'Your Amazon API key secret');
-		}
-
 ## Configuration
 
-For the component, configuration is as simple as adding in the necessary information to the array which gets passed to to the file. Unfortunately tasks don't operate in a similar manner and the settings must be passed via the
-`setSetting` method that it makes available.
+Configuration is as simple as adding in the necessary information to the array which gets passed to to the file.
 
 ## Usage
 
-Once configured and initialized usage is identical between both the component and task. At this point you have access to all of the methods available from the AWS SDK. The library currently has support for the following services:
+At this point you have access to all of the methods available from the AWS SDK. The library currently has support for the following services:
 
-* Simple Notification Service
-* Auto Scale
-* CloudFront
-* CloudWatch
-* Elastic Compute Cloud
-* Elastic Load Balancer
-* Relation Database
-* Elastic Map Reduce
-* SimpleDB
-* Simple Queue Service
+* Amazon CloudFront
+* Amazon CloudWatch
+* Amazon DynamoDB
+* Amazon ElastiCache
+* Amazon Elastic Compute Cloud (Amazon EC2)
+* Amazon Elastic MapReduce
+* Amazon Relational Database Service (Amazon RDS)
+* Amazon Simple Notification Service (Amazon SNS)
+* Amazon Simple Queue Service (Amazon SQS)
+* Amazon Simple Storage Service (Amazon S3)
+* Amazon Simple Workflow Service
+* Amazon SimpleDB
+* Amazon Simple Email Service
+* Amazon Virtual Private Cloud (Amazon VPC)
+* Auto Scaling
+* AWS CloudFormation
+* AWS Elastic Beanstalk
+* AWS Import/Export
+* AWS Identity and Access Management
+* Elastic Load Balancing
 
 Not all of the methods for each service has been thoroughly tested. If you run into any issues, feel free to open an issue here, on the repository.
 
-The specific objects for each service can be accessed through the component or task as a member of it. Here is an example for each:
+The specific objects for each service can be accessed through the component as a member of it. Here are some examples:
 
 * `$this->Amazon->SNS`
 * `$this->Amazon->AutoScale`
