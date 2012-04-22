@@ -16,17 +16,17 @@ class AmazonComponent extends Component {
    * @access private
    */
   private $__services = array(
-			'SNS' 			=> 'AmazonSNS',
-			'AutoScale' 	=> 'AmazonAS',
-			'CloudFront'	=> 'AmazonCloudFront',
-			'CloudWatch'	=> 'AmazonCloudWatch',
-			'EC2'			=> 'AmazonEC2',
-			'ELB'			=> 'AmazonELB',
-			'EMR'			=> 'AmazonEMR',
-			'RDS'			=> 'AmazonRDS',
-			'S3'			=> 'AmazonS3',
-			'SDB'			=> 'AmazonSDB',
-			'SQS'			=> 'AmazonSQS'
+    'SNS' => 'AmazonSNS',
+    'AutoScale' => 'AmazonAS',
+    'CloudFront' => 'AmazonCloudFront',
+    'CloudWatch' => 'AmazonCloudWatch',
+    'EC2' => 'AmazonEC2',
+    'ELB' => 'AmazonELB',
+    'EMR' => 'AmazonEMR',
+    'RDS' => 'AmazonRDS',
+    'S3' => 'AmazonS3',
+    'SDB' => 'AmazonSDB',
+    'SQS' => 'AmazonSQS'
   );
 
   /**
@@ -91,8 +91,8 @@ class AmazonComponent extends Component {
    */
   private function __createService($class) {
     return new $class(array(
-      Configure::read('Aws.key'),      
-      Configure::read('Aws.secret')
+      'key' => Configure::read('Aws.key'),      
+      'secret' => Configure::read('Aws.secret')
     ));
   }  
 
