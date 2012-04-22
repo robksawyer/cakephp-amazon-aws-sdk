@@ -1,25 +1,12 @@
 <?php
+Configure::load('Amazonsdk.amazon');
 
 /**
  * AmazonComponent
  *
  * Provides an entry point into the Amazon SDK.
- *
- * @author Joe Beeson <jbeeson@gmail.com>
- * @see http://book.cakephp.org/view/62/Components
  */
 class AmazonComponent extends Component {
-
-  /**
-   * Default settings.
-   *
-   * @var array
-   * @access protected
-   */
-  protected $_settings = array(
-			'key' 		=> null,
-			'secret'	=> null
-  );
 
   /**
    * Holds an array of valid service "names" and the class that corresponds
@@ -51,10 +38,6 @@ class AmazonComponent extends Component {
   public function __construct(ComponentCollection $collection, $settings = array()) {
     $this->_controller = $collection->getController();
     parent::__construct($collection, $settings);
-    // Now merge in any settings that were passed to us...
-    $this->_settings = array_merge(
-      $this->_settings, $settings
-    );
   }
   
   /**
@@ -68,14 +51,12 @@ class AmazonComponent extends Component {
    */
   public function initialize(Controller $controller) {
     // Handle loading our library firstly...
-			App::import(
-				'Vendor',
-				'Amazon/aws-sdk/sdk.class.php',
-				array(
-					'file' => 'sdk.class.php'
-				)
-			);
-
+    App::build(array('Vendor' => array(
+      APP.'Plugin'.DS.'Amazonsdk'.DS .'Vendor'.DS)
+    ));    
+    App::import('Vendor', 'Amazon', array(
+      'file' => 'aws-sdk'.DS.'sdk.class.php'
+    ));
   }
 
   /**
@@ -110,8 +91,8 @@ class AmazonComponent extends Component {
    */
   private function __createService($class) {
     return new $class(array(
-      'key' => $this->_settings['key'],
-      'secret' => $this->_settings['secret']
+      Configure::read('Aws.key'),      
+      Configure::read('Aws.secret')
     ));
   }  
 

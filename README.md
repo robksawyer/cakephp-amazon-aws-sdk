@@ -7,20 +7,20 @@ Forked from http://github.com/joebeeson/amazon for CakePHP 1.3+
 
 * Download the plugin
 
-        $ cd /path/to/your/app/plugins && git clone git://github.com/mcallisto/amazon.git
+        $ cd /path/to/your/app/plugins && git clone git://github.com/mcallisto/cakephp_amazon_aws_sdk.git
 
 * Add the component to a controller
 
-		public $components = array(
-			'Amazon.Amazon' => array(
-				'key' => 'Your Amazon API key',
-				'secret' => 'Your Amazon API key secret'
-			)
-		);
+		public $components = array('Amazonsdk.Amazon');
 
 ## Configuration
 
-Configuration is as simple as adding in the necessary information to the array which gets passed to to the file.
+You must populate the following two lines in your `/app/Plugin/Amazonsdk/Config/amazon.php` file.
+
+  		'key' => 'YOUR_KEY',
+  		'secret' => 'YOUR_SECRET'
+
+Don't forget to replace the placeholder text with your actual keys!
 
 ## Usage
 
