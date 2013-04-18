@@ -4,8 +4,8 @@
    */
   $config = array(
   	'Aws' => array(
-  		'key' => 'YOUR_KEY',
-  		'secret' => 'YOUR_SECRET'
+  		'key' => CC_S3_ACCESS_KEY,
+  		'secret' => CC_S3_SECRET_KEY
     )
   );
 ?>
