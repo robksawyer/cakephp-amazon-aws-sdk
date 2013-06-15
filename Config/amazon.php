@@ -4,8 +4,8 @@
 */
 	$config = array(
 		'Aws' => array(
-			'key' => CC_S3_ACCESS_KEY,
-			'secret' => CC_S3_SECRET_KEY
+			'key' => getenv('CC_S3_ACCESS_KEY'),
+			'secret' => getenv('CC_S3_SECRET_KEY')
 		)
 	);
 ?>
